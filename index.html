@@ -1,0 +1,254 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Signs of a Correct Apex</title>
+  <style>
+    :root {
+      --primary: #0b1e33;
+      --secondary: #475569;
+      --accent: #3b82f6;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--primary);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .memo-container {
+      background: var(--card-bg);
+      max-width: 650px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    /* Schematic Nail View */
+    .nail-schematic {
+      width: 100%;
+      height: 120px;
+      background: #fafbfc;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      position: relative;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 15px;
+    }
+
+    .nail-shape {
+      width: 80%;
+      height: 60px;
+      position: relative;
+    }
+
+    /* Натуральный ть */
+    .nail-base {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* Искусственное покрытие с апексом */
+    .apex-coating {
+      width: 100%;
+      height: 35px; /* Высота апекса */
+      background: rgba(59, 130, 246, 0.2);
+      border: 2.5px solid var(--accent);
+      position: absolute;
+      bottom: 10px;
+      /* Формирование архитектуры: плавный подъем в центр, плавный спуск к свободному краю */
+      border-radius: 50% 50% 5px 5px / 100% 100% 0 0;
+    }
+
+    /* Маркер апекса (самая высокая точка) */
+    .apex-marker {
+      width: 10px;
+      height: 10px;
+      background: var(--danger, #ef4444);
+      border-radius: 50%;
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    }
+
+    /* Список признаков */
+    .signs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sign-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    /* Кастомный чекбокс-маркер */
+    .check-marker {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--success);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success);
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-marker::after {
+      content: "✓";
+    }
+
+    .sign-content p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--secondary);
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Controls */
+    .controls {
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+
+    .btn-download {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-download:hover { 
+      opacity: 0.9; 
+      transform: translateY(-1px);
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: white; padding: 0; }
+      .controls { display: none; }
+      .memo-container { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; }
+      .nail-schematic { border: 1px solid #ddd; background: #fff; -webkit-print-color-adjust: exact; }
+      .apex-coating { background: rgba(59, 130, 246, 0.1) !important; border: 2.5px solid #3b82f6 !important; -webkit-print-color-adjust: exact; }
+      .sign-item { break-inside: avoid; border: 1px solid #eee; }
+      .check-marker { border: 2px solid #10b981 !important; color: #10b981 !important; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="memo-container">
+    <header>
+      <h1>5 Signs of a Correct Apex</h1>
+    </header>
+
+    <div class="nail-schematic">
+      <div class="nail-shape">
+        <div class="nail-base"></div>
+        <div class="apex-coating">
+          <div class="apex-marker" title="Highest Point (Apex)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signs-list">
+      <div class="sign-item">
+        <div class="check-marker"></div>
+        <div class="sign-content">
+          <p>The highest point is located in the <span class="highlight">center of the nail</span> (stress zone).</p>
+        </div>
+      </div>
+
+      <div class="sign-item">
+        <div class="check-marker"></div>
+        <div class="sign-content">
+          <p><span class="highlight">Smooth descent</span> toward the cuticle zone (no «hump» or step at the base).</p>
+        </div>
+      </div>
+
+      <div class="sign-item">
+        <div class="check-marker"></div>
+        <div class="sign-content">
+          <p><span class="highlight">Smooth descent</span> toward the free edge (no «dip» or abrupt drop‑off).</p>
+        </div>
+      </div>
+
+      <div class="sign-item">
+        <div class="check-marker"></div>
+        <div class="sign-content">
+          <p><span class="highlight">Strengthened side walls</span>, ensuring structure and durability (viewed from the front).</p>
+        </div>
+      </div>
+
+      <div class="sign-item">
+        <div class="check-marker"></div>
+        <div class="sign-content">
+          <p>An absolutely <span class="highlight">smooth surface</span> across the entire architecture (no waves or imperfections).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn-download" onclick="window.print()">
+      Download Memo (PDF)
+    </button>
+  </div>
+
+</body>
